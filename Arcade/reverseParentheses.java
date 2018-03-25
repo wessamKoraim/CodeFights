@@ -1,24 +1,24 @@
 String reverseParentheses(String s)
 {
-    StructLikeNewType var1 = new StructLikeNewType();
-    int var2 = 0;
+    InnerMostParentheses checkInnerMostParentheses = new InnerMostParentheses();
+    int checkComingParentheses = 0;
     
-    var1 = searchForInnerMostParentheses(s);
+    checkInnerMostParentheses = searchForInnerMostParentheses(s);
     
-    if(var1.parenthesesExist)
-        var2 = searchForComingParentheses(var1.innerMost, s);
+    if(checkInnerMostParentheses.parenthesesExist)
+        checkComingParentheses = searchForComingParentheses(checkInnerMostParentheses.innerMost, s);
     else
         return s;
     
-    s = swapBetweenParentheses(var1.innerMost,var2,s);
-    s = removeParentheses(var1.innerMost,var2,s);
+    s = swapBetweenParentheses(checkInnerMostParentheses.innerMost,checkComingParentheses,s);
+    s = removeParentheses(checkInnerMostParentheses.innerMost,checkComingParentheses,s);
     
     return reverseParentheses(s);
 }
 
-private StructLikeNewType searchForInnerMostParentheses(String s)
+private InnerMostParentheses searchForInnerMostParentheses(String s)
 {
-    StructLikeNewType RetVal = new StructLikeNewType();
+    InnerMostParentheses RetVal = new InnerMostParentheses();
     
     RetVal.innerMost = 0;
     RetVal.parenthesesExist = false;
@@ -61,7 +61,7 @@ private String removeParentheses(int left, int right, String s)
     return (s.substring(0,left)+s.substring(left+1,right)+s.substring(right+1));
 }
 
-public class StructLikeNewType
+public class InnerMostParentheses
 {
     int innerMost;
     boolean parenthesesExist;
