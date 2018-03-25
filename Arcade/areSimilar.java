@@ -1,15 +1,15 @@
 boolean areSimilar(int[] a, int[] b)
 {
-    int Na = a.length;
+    int lengthOfArray = a.length;
     int[] bCopy = b.clone();
     int swapped = 0;
     int temp;
     int i,j;
-    for(i = 0; i < Na; i++)
+    for(i = 0; i < lengthOfArray; i++)
     {
         if( (a[i] != bCopy[i]) && (swapped == 0) )
         {
-            for(j = i; j < Na-i; j++)
+            for(j = i; j < lengthOfArray-i; j++)
             {
                 if( (a[i+j] == bCopy[i]) && (a[i] == bCopy[i+j]) )
                 {
@@ -19,7 +19,7 @@ boolean areSimilar(int[] a, int[] b)
                     bCopy[i+j] = temp;
                     break;
                 }
-                else if(j == Na-i-1)
+                else if(j == lengthOfArray-i-1)
                     return false;
             }
         }
